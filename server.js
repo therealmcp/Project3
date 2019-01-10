@@ -22,3 +22,10 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+
+// Data structure
+// each trainer will have mult clients
+// each client will have multiple workouts
+// each workout will have mult elements (sets, reps, and weight)
+// all clients and workouts will have multiple dates
