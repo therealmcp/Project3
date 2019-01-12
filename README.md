@@ -1,29 +1,33 @@
-# Create React Express App
+### MERN + Passport.js
+> example MERN stack application that uses authentication
 
-## About This Boilerplate
+* Mongo, Express, React, Node (MERN) + Passport.js for managing authentication
+* This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Demo
+![demo gif](./_screenshots/mern_passport_demo.gif)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+View the live version of this app here:
+[https://mern-passport.herokuapp.com/](https://mern-passport.herokuapp.com/)
 
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
+## Project Structure
 ```
-yarn install
+|-- server/
+|  |-- server.js                            // The entry point for running the backend server locally, and main server for production
+|  |-- passport/                             // Configuration files used to connect to different machines or set settings
+|     |-- index.js                     // Overloads the passport object and defines serialize and deserialize
+|     |-- localStrategy.js            // Defines a local strategy
+|     |-- googleStrategy.js           // Defines google OAuth stratgey
+|     ....
+|  |-- db/                             
+|     |-- index.js                  // Configures the connection to the database
+|     |-- models/                   // represents data from our database, and defines schemas for each collection
+|        |-- user.js                // Schema for the User collection
+| -- src/                           // Entry for the React client side application
 ```
 
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest
+## Note
+* In order to set the google authentication up, you must register your app @ [https://console.developers.google.com](https://console.developers.google.com) & set `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET` as environmental variables
+* In development mode (i.e. `npm run dev`), OAuth google callback is not being proxied to the google servers. Therefore in order to test the google OAuth on your local machine do the following:
+1) `npm run build`
+2) `npm run prod`
