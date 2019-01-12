@@ -3,13 +3,21 @@ var mongoose = require("mongoose");
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  name: {
+var TrainerSchema = new Schema({
+  firstName: {
     type: String,
     required: true
   },
-  client: {
-    type: Boolean,
+  lastName: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  photo: {
+    type: String,
     required: true
   },
   sessions: {
@@ -19,7 +27,7 @@ var UserSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var User = mongoose.model("User", UserSchema);
+var Trainer = mongoose.model("Trainer", TrainerSchema);
 
 // Export the Article model
-module.exports = User;
+module.exports = Trainer;

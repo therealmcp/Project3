@@ -10,6 +10,18 @@ var SessionSchema = new Schema({
     type: Date,
     required: true
   },
+  clientWeight: {
+    type: Number,
+  },
+  clientBodyFat: {
+    type: Number,
+  },
+  calories: {
+    type: Number
+  },
+  notes: {
+    type: String,
+  },
   workouts: {
     type: Schema.Types.ObjectId,
     ref: "Workouts"
